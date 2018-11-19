@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Destination</title>
+</head>
+<body>
+	<a href="/logged">Home</a>
+	<a href="/">logout</a>
+	<h1>{{trip.destination}}</h1>
+	<h3>Planned By: {{trip.uploader.first_name}} {{trip.uploader.last_name}}</h3>
+	<h3>Description: {{trip.plan}}</h3>
+	<h3>Travel Date From: {{trip.startDate}}</h3>
+	<h3>Travel Date To: {{trip.endDate}}</h3>
+
+
+	<h1>Other users' joining the trip:</h1>
+	{% for user in users%}
+	{% if not user.id == trip.uploader.id %}
+		<p>{{user.first_name}} {{user.last_name}} </p>
+	{% endif %}
+	{% endfor %}
+</body>
+</html>

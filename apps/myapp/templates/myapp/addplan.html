@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add a Trip</title>
+</head>
+<body>
+	<a href="/logged">Home</a>
+	<a href="/">logout</a>
+	<div class="container">
+		<h1>Add a Trip</h1>
+		<form action="/maketrip" method="POST">
+		{%csrf_token%}
+			<p>Destination</p>
+			<input type="text" class="form-control" name="destination" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+
+			<p>Description</p>
+			<input type="text" class="form-control" name="description" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+
+			<p>Travel Date From:</p>
+			<input type="date" class="form-control" name="travel_start" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+
+			<p>Travel Date To: </p>
+			<input type="date" class="form-control" name="travel_end" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+
+			<input type="submit" class="btn btn-success">
+			</form>
+			{% if messages %}
+				{% for message in messages %}
+						<p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+				{% endfor %}
+			{% endif %}
+	</div>
+</body>
+</html>
